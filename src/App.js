@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import {useSelector, useDispatch} from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import './App.css'
+
+import {inc, dec, res, addPalyLoad, removePayLoad} from './store'
+function App(){
+
+  const x = useSelector((state)=> state)
+  const dispatch = useDispatch()
+  
+
+  return(
+    <div className='App'> 
+      <h1>Value is: {x}</h1>
+      <button onClick={()=> dispatch(inc())}>Increate</button>
+      <button onClick={()=> dispatch(dec())}>Decrease</button>
+      <button onClick={()=> dispatch(res())}>Reset</button>
+      <button onClick={()=> dispatch(addPalyLoad(10))}>Increate Payload by 10</button>
+      <button onClick={()=> dispatch(removePayLoad(10))}>Decrease Payload by 10</button>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
